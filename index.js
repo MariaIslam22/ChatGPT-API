@@ -4,7 +4,7 @@ import cors from "cors";
 import bodyParser from "body-parser";
 const configuration = new Configuration({
     organization:"org-IYqusufwLpo1R2bkO887utdz",
-    apiKey: "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"
+    apiKey: "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"
 })
 
 const openai = new OpenAIApi(configuration);
@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
     res.render("index", {mess: message, completion: reply});
 })
 
-app.post("/", async (req, res) => {
+app.post("/reply", async (req, res) => {
     message = req.body.message;
     const completion = await openai.createChatCompletion({
         model: "gpt-3.5-turbo",
@@ -36,10 +36,6 @@ app.post("/", async (req, res) => {
         ]
     })
     reply = completion.data.choices[0].message.content
-    res.redirect("/reply");
-})
-
-app.get("/reply", (req, res) => {
     res.render("index", {mess: message, completion: reply});
 })
 
