@@ -1,8 +1,8 @@
-import {Configuration, OpenAIApi} from "openai";
-import express from "express";
-import cors from "cors";
-import bodyParser from "body-parser";
-import dotenv from "dotenv";
+const {Configuration, OpenAIApi} =require("openai")
+const express =require("express") ;
+const cors = require("cors")
+const bodyParser =require( "body-parser");
+const dotenv = require("dotenv");
 dotenv.config();
 const configuration = new Configuration({
     organization:"org-IYqusufwLpo1R2bkO887utdz",
