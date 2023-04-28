@@ -4,7 +4,7 @@ import cors from "cors";
 import bodyParser from "body-parser";
 const configuration = new Configuration({
     organization:"org-IYqusufwLpo1R2bkO887utdz",
-    apiKey: "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"
+    apiKey: "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"
 })
 
 const openai = new OpenAIApi(configuration);
@@ -36,9 +36,12 @@ app.post("/", async (req, res) => {
         ]
     })
     reply = completion.data.choices[0].message.content
-    res.redirect("/");
+    res.redirect("/reply");
 })
 
+app.get("/reply", (req, res) => {
+    res.render("index", {mess: message, completion: reply});
+})
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
